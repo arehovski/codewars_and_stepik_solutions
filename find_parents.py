@@ -52,12 +52,12 @@ def is_parent(graph, parent, searched):
     return children
 
 
-if __name__ == '__main__':
-    graph = json.loads(input())
+def main_parents(graph):
+    graph = json.loads(graph)
     output = {}
     searched = []
     for item in graph:
         output[item['name']] = is_parent(graph, item['name'], searched)
         searched.clear()
-    for cls, value in sorted(output.items()):
-        print(f'{cls} : {value+1}')
+    output_string = '\n'.join(f'{cls} : {value+1}' for cls, value in sorted(output.items()))
+    return output_string
