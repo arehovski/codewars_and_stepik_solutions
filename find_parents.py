@@ -41,23 +41,23 @@ C : 2
 import json
 
 
-def is_parent(parent, lst):
+def is_parent(graph, parent, searched):
     children = 0
-    for dct in jsn:
-        if dct['name'] not in lst:
-            if parent in dct['parents']:
+    for item in graph:
+        if item['name'] not in searched:
+            if parent in item['parents']:
                 children += 1
-                searched.append(dct['name'])
-                children += is_parent(dct['name'], lst)
+                searched.append(item['name'])
+                children += is_parent(graph, item['name'], searched)
     return children
 
 
 if __name__ == '__main__':
-    jsn = json.loads(input())
+    graph = json.loads(input())
     output = {}
     searched = []
-    for dct in jsn:
-        output[dct['name']] = is_parent(dct['name'], searched)
+    for item in graph:
+        output[item['name']] = is_parent(graph, item['name'], searched)
         searched.clear()
     for cls, value in sorted(output.items()):
         print(f'{cls} : {value+1}')

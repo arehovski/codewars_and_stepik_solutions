@@ -24,7 +24,7 @@ result = solution("apples, pears # and bananas\ngrapes\nbananas !apples", ["#", 
 import re
 
 
-def solution(string,markers):
+def solution(string, markers):
     if not markers:
         return string
     markers_str = ''

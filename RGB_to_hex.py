@@ -11,7 +11,7 @@ The following are examples of expected output values:
 
 def rgb(r, g, b):
     r, g, b = check_range(r), check_range(g), check_range(b)
-    return '{:0>2}'.format(hex(r)[2:].upper()) + '{:0>2}'.format(hex(g)[2:].upper()) + '{:0>2}'.format(hex(b)[2:].upper())
+    return ''.join('{:0>2}'.format(hex(i)[2:].upper()) for i in (r, g, b))
 
 
 def check_range(n):
